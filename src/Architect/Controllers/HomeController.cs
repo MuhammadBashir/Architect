@@ -19,7 +19,7 @@ namespace Architect.Controllers
         {
             var request = new LogsRequest();
             var response = mediator.Send(request);
-            var logs = response.Result.Logs.Take(1).ToList();
+            var logs = response.Result.Logs.Take(10).ToList();
             return View(logs);
         }
 
