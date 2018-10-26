@@ -11,7 +11,6 @@ namespace Architect.Infrastructure.Common
     public class SqlConnectionFactory : IConnectionFactory
     {
         private string connectionString;
-        private CancellationTokenSource cancellationToken;
         public SqlConnectionFactory(string connectionString)
         {
             this.connectionString = connectionString;
@@ -22,14 +21,12 @@ namespace Architect.Infrastructure.Common
             conn.Open();
             return conn;
         }
-
         public IDbConnection CreateConnection(string connectionString)
         {
             var connection = new SqlConnection(connectionString);
             connection.Open();
             return connection;
         }
-
         public async Task<IDbConnection> CreateConnectionAysnc()
         {
             var connection = new SqlConnection(connectionString);

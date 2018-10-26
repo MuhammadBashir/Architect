@@ -10,19 +10,16 @@ namespace Architect.Controllers
     public class HomeController : Controller
     {
         readonly IMediator mediator;
-        readonly ILogger<HomeController> logger;
-        public HomeController(IMediator mediator, ILogger<HomeController> logger)
+        public HomeController(IMediator mediator)
         {
             this.mediator = mediator;
-            this.logger = logger;
         }
         public IActionResult Index()
         {
-            logger.LogInformation("Logger to check logging and monitor further steps of {0}", nameof(HomeController));
-            var request = new LogsRequest();
-            var response = mediator.Send(request);
-            var logs = response.Result.Logs;
-            return View(logs);
+            //var request = new LogsRequest();
+            //var response = mediator.Send(request);
+            //var logs = response.Result.Logs;
+            return View();
         }
 
         public IActionResult About()
