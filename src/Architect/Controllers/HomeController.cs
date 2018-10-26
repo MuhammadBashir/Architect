@@ -4,6 +4,7 @@ using Architect.Models;
 using MediatR;
 using Architect.Handlers.LogsHandlers;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace Architect.Controllers
 {
@@ -16,10 +17,10 @@ namespace Architect.Controllers
         }
         public IActionResult Index()
         {
-            //var request = new LogsRequest();
-            //var response = mediator.Send(request);
-            //var logs = response.Result.Logs;
-            return View();
+            var request = new LogsRequest();
+            var response = mediator.Send(request);
+            var logs = response.Result.Logs.Take(1).ToList();
+            return View(logs);
         }
 
         public IActionResult About()
